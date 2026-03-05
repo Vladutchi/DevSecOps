@@ -1,0 +1,25 @@
+name: List Directory Contents
+
+on:
+  # Trigger the workflow on push to any branch
+  push:
+    branches: [ "*" ]
+  # Also allow manual trigger from GitHub UI
+  workflow_dispatch:
+
+jobs:
+  list-files:
+    runs-on: ubuntu-latest
+    
+    steps:
+      # First, checkout the repository code
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      # Run ls -la command
+      - name: List directory contents
+        run: ls -la
+      
+      # Optional: Show current working directory
+      - name: Show current directory
+        run: pwd
